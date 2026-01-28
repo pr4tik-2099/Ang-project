@@ -5,6 +5,7 @@ import { LoginRequest } from '../interfaces/login-request';
 import { AuthResponse } from '../interfaces/auth-response';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
@@ -26,4 +27,28 @@ export class Auth {
       })
     )
   }
+
+  isLoggedIn = ():boolean =>{
+    const token = this.getToken();
+    if(!token) return false;
+    return !this.isTokenExpired();
+  }
+
+  private isTokenExpired(){
+    const token = this.getToken();
+    if(!token)
+    {
+      return true;
+    }
+    else{
+      const decode = jwtDecode(token);
+      const isTokenExpire = Date.now() >= decode['exp']!* 1000;
+       return isTokenExpire;
+    }
+  }
+
+  logout =():void =>{
+    localStorage.removeItem(this.tokenKey);
+  }
+  private getToken = ():string | null => localStorage.getItem(this.tokenKey) || '';
 }
