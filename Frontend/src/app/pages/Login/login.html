@@ -1,0 +1,34 @@
+<div class="h-screen flex items-center justify-center">
+    <form class="shadow-md p-10 w-1/3 rounded-md border-4 border-emerald-400" [formGroup]="form" (ngSubmit)="Login()">
+        <div class="py-4 display-flex justify-center text-center">
+            <h1 class="font-semibold py-2 text-3xl underline decoration-cyan-500">
+                LOGIN 
+            </h1>
+            <h6 class="text-base text-"></h6>
+        </div>
+
+        <div class="py-2 mt-4">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label class="text-lg">Email</mat-label>
+                <input matInput type="email" formControlName="email"/>
+                <mat-icon matPrefix>email</mat-icon>
+            </mat-form-field>   
+        </div>
+
+         <div class="py-2">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label class="text-lg">Password</mat-label>
+                <input matInput type="password" formControlName="password" />
+                <mat-icon matPrefix>lock</mat-icon>
+                <mat-icon matSuffix>visibility</mat-icon>
+            </mat-form-field>   
+        </div>
+        <div>
+            <button [disabled]="!form.valid" type="submit" class="w-full mt-4 py-3 disabled:bg-cyan-400 text-xl font-medium bg-green-500 rounded-md">Login</button>
+        </div>
+        <div class="mt-5">
+            Don't have an account?
+            <a [routerLink]="['/Registration']" class="text-cyan-500 cursor-pointer text-lg">Register</a>
+        </div>
+    </form>
+</div>
