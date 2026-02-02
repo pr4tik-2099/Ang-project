@@ -14,6 +14,7 @@ namespace Ang_app.DTO
         public string? PhoneNumber { get; set; }
         public bool? TwoFactorEnabled { get; set; }
         public bool? PhnumberConfirm { get; set; }
-        public int AccessFailedCount { get; set; }        
+        public int AccessFailedCount { get; set; }      
+        public string? password { get; set; }  
     }
 }

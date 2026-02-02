@@ -148,7 +148,7 @@ namespace Ang_app.Controllers
 
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpGet("Details")]
         public async Task<ActionResult<UserDetailDTO>> GetUserDetails()
         {
